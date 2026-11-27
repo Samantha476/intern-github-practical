@@ -4,8 +4,8 @@
 
 | Item | Value |
 |---|---|
-| GitHub Username | **Samantha** |
-| GitHub Repository URL | _to be filled after push_ (`https://github.com/Samantha/intern-task-manager`) |
+| GitHub Username | **Samantha476** |
+| GitHub Repository URL | https://github.com/Samantha476/intern-github-practical |
 | Technologies used | HTML, CSS, JavaScript, Git, GitHub, VS Code |
 | Project | Intern Task Manager / Intern Daily Task Tracker |
 
@@ -29,6 +29,8 @@
 | 6 | Add task form with description, priority and date | feature/task-form → merged to main |
 | 7 | Add task status field with status filters | feature/task-status → merged to main |
 | 8 | Add self-study answers and submission documentation | main |
+| 9 | Update README from GitHub to demonstrate pull | main (pulled from GitHub) |
+| 10 | Update submission with GitHub username and repository URL | main |
 
 # Reflection
 

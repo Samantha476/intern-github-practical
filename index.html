@@ -51,7 +51,14 @@
     <section class="card">
       <h2>Add Task</h2>
       <form id="task-form" class="task-form">
-        <input type="text" id="task-input" placeholder="e.g. Learn Git" required>
+        <input type="text" id="task-name" placeholder="Task name *" required>
+        <input type="text" id="task-desc" placeholder="Description">
+        <select id="task-priority" aria-label="Priority">
+          <option value="High">High priority</option>
+          <option value="Medium" selected>Medium priority</option>
+          <option value="Low">Low priority</option>
+        </select>
+        <input type="date" id="task-date" aria-label="Date">
         <button type="submit">Add Task</button>
       </form>
     </section>

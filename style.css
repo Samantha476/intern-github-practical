@@ -93,20 +93,28 @@ body {
 /* Task form */
 .task-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.task-form input {
-  flex: 1;
+.task-form input,
+.task-form select {
+  flex: 1 1 160px;
   padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 15px;
+  background: #fff;
 }
 
-.task-form input:focus {
+.task-form input:focus,
+.task-form select:focus {
   outline: 2px solid var(--primary);
   border-color: transparent;
+}
+
+.task-form button {
+  flex: 1 1 100%;
 }
 
 button {
@@ -125,6 +133,16 @@ button:hover {
 }
 
 /* Task lists */
+.task-title {
+  font-weight: 600;
+}
+
+.task-meta {
+  font-size: 13px;
+  color: var(--muted);
+  flex: 1;
+}
+
 .task-list {
   list-style: none;
   margin: 0;

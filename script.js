@@ -1,7 +1,10 @@
 // Intern Task Manager - task logic
 
 const taskForm = document.getElementById("task-form");
-const taskInput = document.getElementById("task-input");
+const taskName = document.getElementById("task-name");
+const taskDesc = document.getElementById("task-desc");
+const taskPriority = document.getElementById("task-priority");
+const taskDate = document.getElementById("task-date");
 const taskList = document.getElementById("task-list");
 const completedList = document.getElementById("completed-list");
 const emptyMsg = document.getElementById("empty-msg");
@@ -30,7 +33,15 @@ function render() {
     li.className = "task-item" + (task.done ? " done" : "");
 
     const span = document.createElement("span");
+    span.className = "task-title";
     span.textContent = task.name;
+
+    const meta = document.createElement("div");
+    meta.className = "task-meta";
+    meta.textContent =
+      (task.desc ? task.desc + " · " : "") +
+      "Priority: " + task.priority +
+      (task.date ? " · " + task.date : "");
 
     const actions = document.createElement("span");
     actions.className = "actions";
@@ -58,6 +69,7 @@ function render() {
     actions.appendChild(delBtn);
 
     li.appendChild(span);
+    li.appendChild(meta);
     li.appendChild(actions);
 
     if (task.done) {
@@ -74,16 +86,21 @@ function render() {
 
 taskForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const name = taskInput.value.trim();
+  const name = taskName.value.trim();
   if (!name) return;
 
   tasks.push({
     id: Date.now(),
     name: name,
+    desc: taskDesc.value.trim(),
+    priority: taskPriority.value,
+    date: taskDate.value,
     done: false
   });
 
-  taskInput.value = "";
+  taskName.value = "";
+  taskDesc.value = "";
+  taskDate.value = "";
   render();
 });
 

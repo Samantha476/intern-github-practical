@@ -30,6 +30,25 @@
         <div><dt>Start Date</dt><dd>2026-11-16</dd></div>
       </dl>
     </section>
+    <section class="card">
+      <h2>Add Task</h2>
+      <form id="task-form" class="task-form">
+        <input type="text" id="task-input" placeholder="e.g. Learn Git" required>
+        <button type="submit">Add Task</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Tasks</h2>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-msg" class="empty">No tasks yet. Add one above.</p>
+    </section>
+
+    <section class="card">
+      <h2>Completed Tasks</h2>
+      <ul id="completed-list" class="task-list completed"></ul>
+      <p id="completed-empty" class="empty">Nothing completed yet.</p>
+    </section>
   </main>
 
   <footer class="site-footer">

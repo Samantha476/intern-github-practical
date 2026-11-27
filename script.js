@@ -7,7 +7,19 @@ const completedList = document.getElementById("completed-list");
 const emptyMsg = document.getElementById("empty-msg");
 const completedEmpty = document.getElementById("completed-empty");
 
+const statTotal = document.getElementById("stat-total");
+const statCompleted = document.getElementById("stat-completed");
+const statPending = document.getElementById("stat-pending");
+
 let tasks = [];
+
+function renderDashboard() {
+  const total = tasks.length;
+  const completed = tasks.filter(function (t) { return t.done; }).length;
+  statTotal.textContent = total;
+  statCompleted.textContent = completed;
+  statPending.textContent = total - completed;
+}
 
 function render() {
   taskList.innerHTML = "";
@@ -57,6 +69,7 @@ function render() {
 
   emptyMsg.style.display = tasks.some(function (t) { return !t.done; }) ? "none" : "";
   completedEmpty.style.display = tasks.some(function (t) { return t.done; }) ? "none" : "";
+  renderDashboard();
 }
 
 taskForm.addEventListener("submit", function (event) {

@@ -1,23 +1,49 @@
-/* Intern Task Manager - base styles */
+/* Intern Task Manager - styling
+   Marvex Software Solutions | Intern Practical 01 */
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background: #f4f6f9;
-  color: #222;
+:root {
+  --primary: #1f3b63;
+  --accent: #2f7d5c;
+  --danger: #c0392b;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --border: #dde3ec;
+  --text: #22303f;
+  --muted: #6b7785;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Header */
 .site-header {
-  background: #1f3b63;
+  background: linear-gradient(135deg, var(--primary), #2c5a8f);
   color: #fff;
-  padding: 24px;
+  padding: 32px 16px;
   text-align: center;
 }
 
 .site-header h1 {
-  margin: 0;
+  margin: 0 0 6px;
+  font-size: 30px;
+  letter-spacing: 0.5px;
 }
 
+.site-header p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Layout */
 .container {
   max-width: 900px;
   margin: 24px auto;
@@ -25,11 +51,20 @@ body {
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #dde3ec;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(31, 59, 99, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 20px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
 }
 
 /* Intern information */
@@ -41,22 +76,154 @@ body {
 
 .intern-info dl div {
   display: flex;
-  border-bottom: 1px dashed #dde3ec;
+  border-bottom: 1px dashed var(--border);
   padding-bottom: 6px;
 }
 
 .intern-info dt {
   font-weight: bold;
   width: 160px;
+  color: var(--primary);
 }
 
 .intern-info dd {
   margin: 0;
 }
 
+/* Task form */
+.task-form {
+  display: flex;
+  gap: 10px;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.task-form input:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+button {
+  font: inherit;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 16px;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  transition: filter 0.15s ease;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+/* Task lists */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #fafbfd;
+}
+
+.task-item.done {
+  background: #eef7f2;
+}
+
+.task-item.done > span:first-child {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.task-item .actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-item .actions button {
+  padding: 5px 12px;
+  font-size: 13px;
+}
+
+.task-item .actions button:last-child {
+  background: var(--danger);
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+  margin: 6px 0 0;
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.dashboard .stat {
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f0f4fa;
+  border: 1px solid var(--border);
+}
+
+.dashboard .stat strong {
+  display: block;
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.dashboard .stat.completed strong {
+  color: var(--accent);
+}
+
+.dashboard .stat.pending strong {
+  color: #c77b1a;
+}
+
+/* Footer */
 .site-footer {
   text-align: center;
-  padding: 16px;
-  color: #666;
+  padding: 20px 16px;
+  color: var(--muted);
   font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .task-form {
+    flex-direction: column;
+  }
+
+  .intern-info dl div {
+    flex-direction: column;
+  }
+
+  .intern-info dt {
+    width: auto;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
 }

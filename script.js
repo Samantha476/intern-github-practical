@@ -15,6 +15,21 @@ const statCompleted = document.getElementById("stat-completed");
 const statPending = document.getElementById("stat-pending");
 
 let tasks = [];
+let activeFilter = "all";
+
+const filterButtons = document.querySelectorAll(".filter");
+filterButtons.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    activeFilter = btn.dataset.filter;
+    filterButtons.forEach(function (b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    render();
+  });
+});
+
+function matchesFilter(task) {
+  return activeFilter === "all" || task.status === activeFilter;
+}
 
 function renderDashboard() {
   const total = tasks.length;
@@ -28,7 +43,7 @@ function render() {
   taskList.innerHTML = "";
   completedList.innerHTML = "";
 
-  tasks.forEach(function (task) {
+  tasks.filter(matchesFilter).forEach(function (task) {
     const li = document.createElement("li");
     li.className = "task-item" + (task.done ? " done" : "");
 
@@ -41,16 +56,29 @@ function render() {
     meta.textContent =
       (task.desc ? task.desc + " · " : "") +
       "Priority: " + task.priority +
-      (task.date ? " · " + task.date : "");
+      (task.date ? " · " + task.date : "") +
+      " · Status: " + task.status;
 
     const actions = document.createElement("span");
     actions.className = "actions";
 
-    if (!task.done) {
+    if (task.status === "To Do") {
+      const startBtn = document.createElement("button");
+      startBtn.type = "button";
+      startBtn.textContent = "Start";
+      startBtn.addEventListener("click", function () {
+        task.status = "In Progress";
+        render();
+      });
+      actions.appendChild(startBtn);
+    }
+
+    if (task.status === "In Progress") {
       const doneBtn = document.createElement("button");
       doneBtn.type = "button";
       doneBtn.textContent = "Complete";
       doneBtn.addEventListener("click", function () {
+        task.status = "Done";
         task.done = true;
         render();
       });
@@ -95,6 +123,7 @@ taskForm.addEventListener("submit", function (event) {
     desc: taskDesc.value.trim(),
     priority: taskPriority.value,
     date: taskDate.value,
+    status: "To Do",
     done: false
   });
 

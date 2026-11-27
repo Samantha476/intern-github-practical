@@ -1,0 +1,40 @@
+/* Intern Task Manager - base styles */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+  color: #222;
+}
+
+.site-header {
+  background: #1f3b63;
+  color: #fff;
+  padding: 24px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #dde3ec;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 16px;
+  color: #666;
+  font-size: 14px;
+}

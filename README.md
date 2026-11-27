@@ -1,13 +1,13 @@
 # Intern Task Manager
 
-A small web project used for **Practical 01 — GitHub & VS Code: Git Integration,
+A small web project used for **Practical 01 â€” GitHub & VS Code: Git Integration,
 Version Control and Self-Study Example Project**.
 
 ## Files
 
-- `index.html` — page structure
-- `style.css` — styling
-- `script.js` — task logic
+- `index.html` â€” page structure
+- `style.css` â€” styling
+- `script.js` â€” task logic
 
 ## Run locally
 
@@ -20,3 +20,5 @@ http://localhost/github/intern-task-manager/
 ## Author
 
 - GitHub: Samantha
+
+> **Note:** Last updated directly from GitHub to demonstrate git pull (Part K practical).
